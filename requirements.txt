@@ -2,12 +2,12 @@ fastapi
 uvicorn
 pandas
 numpy
-scikit-learn
+scikit-learn==1.5.2
 joblib
 python-multipart
 google-generativeai
 python-dotenv
 faiss-cpu
-imblearn
+imbalanced-learn==0.12.4
 requests
 streamlit
