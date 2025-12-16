@@ -22,3 +22,8 @@ WESAD/
 metrics.txt
 best_params.txt
 garbage/
+
+# Professional Cleanup
+data/
+scripts/
+models/
