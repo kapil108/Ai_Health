@@ -97,8 +97,8 @@ The system's Random Forest model has been rigorously evaluated using Leave-One-S
 
 ### Receiver Operating Characteristic (ROC) Curve
 Demonstrates the trade-off between sensitivity and specificity.
-![ROC Curve](roc_curve.png)
+![ROC Curve](assets/roc_curve.png)
 
 ### Confusion Matrix
 Shows the model's accuracy in distinguishing between "Stress" and "Non-Stress" states.
-![Confusion Matrix](confusion_matrix_loso_binary.png)
+![Confusion Matrix](assets/confusion_matrix_loso_binary.png)
