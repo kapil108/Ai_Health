@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv
+venv/
+env/
+
+# Environment Variables
+.env
+
+# Large Data (Exclude raw WESAD, keep processed if needed for demo, but typically exclude large CSVs)
+WESAD/
+*.pkl
+
+# IDEs
+.vscode/
+.idea/
+
+# Artifacts/Temp
+metrics.txt
+best_params.txt
+garbage/
