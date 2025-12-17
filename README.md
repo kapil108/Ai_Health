@@ -1,4 +1,7 @@
 # AI-Powered Stress Detection System
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://aihealth-5ysgdhkb4ttrryrbtlovje.streamlit.app/)
+**Live Demo:** [Click Here to View Dashboard](https://aihealth-5ysgdhkb4ttrryrbtlovje.streamlit.app/)
+
 
 This is the backend server and interactive dashboard for the **Multimodal AI Stress Detection System**. It combines physiological data analysis with a Generative AI Health Coach to detect stress and provide personalized recovery advice.
 
@@ -79,10 +82,19 @@ This project is designed for easy cloud deployment.
 5.  **Environment Variables**: Add `GEMINI_API_KEY`.
 
 ### Step 2: Deploy Frontend to Streamlit Cloud
-1.  Go to [Streamlit Community Cloud](https://streamlit.io/cloud).
-2.  Select your repo and stick to the default settings (Main file: `src/dashboard.py`).
+
 3.  **Environment Variables**:
     *   `API_URL`: The URL of your Render backend (e.g., `https://your-api.onrender.com`).
+
+## 📂 Project Structure
+
+A clean, professional structure organized for scalability:
+
+-   `src/`: **Core Application Code**. Contains the FastAPI backend (`api.py`) and Streamlit dashboard (`dashboard.py`).
+-   `assets/`: **Project Visuals**. Stores images for documentation (ROC curves, confusion matrices).
+-   `scripts/`: **Utility Scripts**. Standalone scripts for testing or specific one-off tasks.
+-   `models/`: (Local Only) Directory for trained `.joblib` models (excluded from Git for size).
+-   `data/`: (Local Only) Directory for datasets and CSV files (excluded from Git).
 
 ## API Endpoints Overview
 
