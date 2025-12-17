@@ -72,19 +72,20 @@ streamlit run src/dashboard.py
 
 This project is designed for easy cloud deployment.
 
-### Step 1: Deploy Backend to Render
+### Step 1: Deploy Backend to Railway
 1.  Push your code to **GitHub**.
-2.  Create a new **Web Service** on [Render](https://render.com).
-3.  Connect your repository.
-4.  **Settings**:
-    *   **Build Command**: `pip install -r requirements.txt`
-    *   **Start Command**: `uvicorn src.api:app --host 0.0.0.0 --port $PORT`
-5.  **Environment Variables**: Add `GEMINI_API_KEY`.
+2.  Login to [Railway](https://railway.app) and create a **New Project** -> **Deploy from GitHub repo**.
+3.  Select your repository (`Ai_Health`).
+4.  Railway will automatically detect the `Procfile` and `nixpacks.toml` configuration files.
+5.  **Environment Variables**:
+    *   Go to the "Variables" tab.
+    *   Add `GEMINI_API_KEY` with your actual API key.
+6.  The deployment will start automatically.
 
 ### Step 2: Deploy Frontend to Streamlit Cloud
-
-3.  **Environment Variables**:
-    *   `API_URL`: The URL of your Render backend (e.g., `https://your-api.onrender.com`).
+1.  Deploy your `src/dashboard.py` file on Streamlit Cloud.
+2.  **Environment Variables**:
+    *   `API_URL`: The URL of your Railway backend (e.g., `https://web-production-xxxx.up.railway.app`).
 
 ## 📂 Project Structure
 
