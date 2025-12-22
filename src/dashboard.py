@@ -81,6 +81,14 @@ if mode == "Upload CSV File":
                         if summary_advice:
                             st.info(f"🤖 **AI Health Coach Insights:**\n\n{summary_advice}")
                         
+                        # Store context for Chatbot
+                        st.session_state['current_context'] = (
+                            f"Use this context for the user's current batch analysis:\n"
+                            f"- Total Samples: {total_samples}\n"
+                            f"- Stress Detected: {stress_count} ({stress_percentage:.1f}%)\n"
+                            f"- Summary Advice: {summary_advice if summary_advice else 'None'}\n"
+                        )
+                        
                         # Metrics
                         total_samples = len(results)
                         stress_count = results[results["prediction"] == "Stress"].shape[0]
@@ -165,6 +173,20 @@ elif mode == "Manual Data Entry":
                         confidence = result.get("confidence", 0.0)
                         advice = result.get("advice")
                         
+                        # Store context for Chatbot
+                        st.session_state['current_context'] = (
+                            f"Use this context for the user's current manual reading:\n"
+                            f"- BVP Mean: {bvp_mean}\n"
+                            f"- BVP Std Dev: {bvp_std}\n"
+                            f"- BVP Max: {bvp_max}\n"
+                            f"- EDA Mean: {eda_mean}\n"
+                            f"- EDA Std Dev: {eda_std}\n"
+                            f"- EDA Max: {eda_max}\n"
+                            f"- Heart Rate Mean: {hr_mean}\n"
+                            f"- Accelerometer Mean: {acc_mean}\n"
+                            f"- Prediction: {prediction} (Confidence: {confidence}%)"
+                        )
+                        
                         st.write("---")
                         st.subheader("Result")
                         if prediction == "Stress":
@@ -209,7 +231,11 @@ if csv_active or manual_active:
             with st.spinner("Thinking..."):
                 try:
                     hist_payload = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages[:-1]]
-                    payload = {"message": prompt, "context": "User is on dashboard.", "history": hist_payload}
+                    
+                    # Use dynamically stored context if available, else default
+                    context_str = st.session_state.get('current_context', "User is on dashboard.")
+                    
+                    payload = {"message": prompt, "context": context_str, "history": hist_payload}
                     
                     response = requests.post(f"{API_URL}/chat", json=payload)
                     
