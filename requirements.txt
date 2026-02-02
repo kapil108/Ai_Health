@@ -11,3 +11,4 @@ faiss-cpu
 imbalanced-learn==0.12.4
 requests
 streamlit
+altair<5

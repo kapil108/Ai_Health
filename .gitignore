@@ -12,6 +12,7 @@ env/
 
 # Large Data (Exclude raw WESAD, keep processed if needed for demo, but typically exclude large CSVs)
 WESAD/
+S10/
 *.pkl
 
 # IDEs

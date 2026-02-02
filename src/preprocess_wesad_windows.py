@@ -30,14 +30,22 @@ def extract_features_from_seg(seg):
     return {"mean":float(np.nanmean(seg)), "std":float(np.nanstd(seg)), "max":float(np.nanmax(seg))}
 
 rows = []
-if not os.path.exists(WESAD_PATH):
-    print(f"Directory {WESAD_PATH} not found.")
-else:
-    for subj in sorted(os.listdir(WESAD_PATH)):
-        subj_dir = os.path.join(WESAD_PATH, subj)
+rows = []
+# Process only S10 as requested
+subjects = ['S10']
+
+for subj in subjects:
+    # S10 is at root, so look in ./S10
+    subj_dir = subj 
+    if not os.path.isdir(subj_dir): 
+        print(f"Directory {subj_dir} not found. Checking WESAD/{subj}...")
+        subj_dir = os.path.join("WESAD", subj)
         if not os.path.isdir(subj_dir): continue
-        pkl = os.path.join(subj_dir, subj + ".pkl")
-        if not os.path.exists(pkl): continue
+
+    pkl = os.path.join(subj_dir, subj + ".pkl")
+    if not os.path.exists(pkl): 
+        print(f"Pickle {pkl} not found.")
+        continue
         try:
             data = safe_load_pickle(pkl)
         except Exception as e:
