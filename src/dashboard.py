@@ -19,10 +19,14 @@ mode = st.sidebar.radio("Choose Input Method:", ["Upload CSV File", "Manual Data
 
 st.sidebar.markdown("---")
 
-st.sidebar.markdown("""
+st.sidebar.markdown(f"""
 ### Instructions
-1. **Upload CSV File**: Upload a dataset containing physiological features to get batch predictions and visualize data.
+1. **Upload CSV File**: Upload a dataset containing physiological features to get batch predictions.
 2. **Manual Data Entry**: Input specific feature values to get a single stress prediction.
+
+---
+**Debug Info:**
+- Backend URL: `{API_URL}`
 """)
 
 if mode == "Upload CSV File":
